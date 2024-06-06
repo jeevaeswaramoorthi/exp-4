@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f2f2f2;
+    }
+
+    #registrationBox {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 400px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div id="registrationBox">
+    <h2>Registration Form</h2>
+
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <span id="usernameError" class="error"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <span id="emailError" class="error"></span>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber">
+        <span id="phoneNumberError" class="error"></span>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob">
+        <span id="dobError" class="error"></span>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <span id="genderError" class="error"></span>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="passwordError" class="error"></span>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword">
+        <span id="confirmPasswordError" class="error"></span>
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var username = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
+        var dob = document.getElementById('dob').value;
+        var gender = document.getElementById('gender').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+
+        var usernameError = document.getElementById('usernameError');
+        var emailError = document.getElementById('emailError');
+        var phoneNumberError = document.getElementById('phoneNumberError');
+        var dobError = document.getElementById('dobError');
+        var genderError = document.getElementById('genderError');
+        var passwordError = document.getElementById('passwordError');
+        var confirmPasswordError = document.getElementById('confirmPasswordError');
+
+        var isValid = true;
+        if (username === '') {
+            usernameError.textContent = 'Username is required';
+            isValid = false;
+        } else {
+            usernameError.textContent = '';
+        }
+
+        if (email === '') {
+            emailError.textContent = 'Email is required';
+            isValid = false;
+        } else {
+            emailError.textContent = '';
+        }
+
+        if (phoneNumber === '') {
+            phoneNumberError.textContent = 'Phone number is required';
+            isValid = false;
+        } else {
+            phoneNumberError.textContent = '';
+        }
+        if (dob === '') {
+            dobError.textContent = 'Date of birth is required';
+            isValid = false;
+        } else {
+            dobError.textContent = '';
+        }
+
+        if (gender === '') {
+            genderError.textContent = 'Gender is required';
+            isValid = false;
+        } else {
+            genderError.textContent = '';
+        }
+
+        if (password === '') {
+            passwordError.textContent = 'Password is required';
+            isValid = false;
+        } else {
+            passwordError.textContent = '';
+        }
+
+        if (confirmPassword === '') {
+            confirmPasswordError.textContent = 'Please confirm password';
+            isValid = false;
+        } else if (password !== confirmPassword) {
+            confirmPasswordError.textContent = 'Passwords do not match';
+            isValid = false;
+        } else {
+            confirmPasswordError.textContent = '';
+        }
+        return isValid;
+    }
+</script>
+</body>
+</html>
